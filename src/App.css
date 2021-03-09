@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+
+.App section button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    min-width: 60px;
+    min-height: 60px;
+    padding: 5px;
+    background: purple;
+    color: white;
+    border: 0.1px solid gray;
+    font-size: 2rem;
+
+}
