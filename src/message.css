@@ -1,0 +1,171 @@
+:root {
+  --message-received-bg: var(--text-secondary);
+  --message-received-color: black;
+  --message-sent-bg: #0b93f6;
+  --message-sent-color: white;
+  --message-font-family: 'Poppins', 'Whitney', Arial, sans-serif;
+
+  --message-emoji-size: 2rem;
+}
+
+.message-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  max-width: 500px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+  font-family: var(--message-font-family);
+}
+
+.message-content, .message-content > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  max-width: 300px;
+  font-family: var(--message-font-family);
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  scroll-snap-align: end;
+  margin: 0 0 12px 0;
+}
+
+.message .message-timestamp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  margin: 0 1rem;
+  opacity: 0.4;
+  color: gray;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent .message-content:not(.onlyEmoji) {
+  color: var(--message-sent-color);
+  background: var(--message-sent-bg);
+  align-self: flex-end;
+}
+.sent .message-content, .sent .message-content > span {
+  text-align: start;
+}
+
+.received .message-content:not(.onlyEmoji) {
+  color: var(--message-received-color);
+  background: var(--message-received-bg);
+  align-self: flex-start;
+}
+
+.received .message-content, .received .message-content > span {
+  text-align: end;
+}
+
+.message-content.onlyEmoji {
+  padding: 0 0;
+}
+.message-content.onlyEmoji > span img {
+  --message-emoji-size: 3rem;
+}
+.message-content.onlyEmoji + .message-timestamp {
+  margin: 0 0.5rem;
+}
+
+
+.message-content, .message-content > span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre-wrap;
+  font-size: 1.25rem;
+}
+.emoji, .message-content > span img {
+  width: var(--message-emoji-size) !important;
+  height: var(--message-emoji-size) !important;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.message .message-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+
+
+.message-avatar-clicked {
+  display: none;
+  opacity: 0;
+  transition: 800ms ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow:visible;
+
+}
+
+.clicked + .message-avatar-clicked {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  z-index: 1000;
+}
+.message-avatar-clicked .bg {
+  content: '';
+  min-width: 100%;
+  min-height: 100vh;
+  z-index: 999;
+  background: rgba(58, 58, 58, .25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  left: 0; top: 0;
+}
+
+.message-avatar-clicked p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 300px;
+  min-height: 300px;
+  padding: 5px;
+  background: rgb(56, 56, 143);
+  border-radius: 10px;
+  z-index: 1000;
+  color:#bbbbbb;
+}
+.message-avatar-clicked p img[src] {
+  border: 0.1px solid gray;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 5px black);
+}
